@@ -4,6 +4,8 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">  
 <configuration>
     <mappers>
-        <mapper resource="config/mybatis/TodoMapper.xml" />
+        <mapper resource="config/mybatis/UserMapper.xml" />
+        <mapper resource="config/mybatis/TaskMapper.xml" />
+        <mapper resource="config/mybatis/ScheduleMapper.xml" />
     </mappers>
 </configuration>
