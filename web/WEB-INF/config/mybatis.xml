@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     <bean id="driverManagerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName">
             <value>${database.driver}</value>
@@ -70,12 +69,22 @@
             <ref bean="dataSource"/>
         </property>
         <property name="configLocation">
-            <value>config/mybatis/mybatis-config.xml</value>
+            <value>classpath:com/todo/mapper/mybatis/mybatis-config.xml</value>
         </property>
     </bean>
-    <bean id="todoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
+    <bean id="scheduleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
         <property name="mapperInterface">
-            <value>com.todo.mapper.TodoMapper</value>
+            <value>com.todo.mapper.ScheduleMapper</value>
+        </property>
+    </bean>
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
+        <property name="mapperInterface">
+            <value>com.todo.mapper.UserMapper</value>
+        </property>
+    </bean>
+    <bean id="taskMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
+        <property name="mapperInterface">
+            <value>com.todo.mapper.TaskMapper</value>
         </property>
     </bean>
 </beans>

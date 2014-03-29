@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todo.mapper.UserMapper">
-
     <resultMap id="userMap" type="com.todo.model.User">
         <result property="id" column="id" />
         <result property="account" column="account"/>
@@ -11,17 +10,9 @@
         <result property="valied" column="valied"/>
         <result property="activited" column="activited"/>
     </resultMap>
-
     <insert id="insertUser" parameterType="User">
         INSERT INTO user (`account`, `passwd`, `email`, `create_time`, `valied`, `activited`) VALUES (#{account},#{passwd},#{email},#{createTime},#{valied},#{activited})
     </insert>
-
-    <delete id="deleteUser" parameterType="String">
-        DELETE FROM user
-        <where>
-            <if test="account != null">and account=#{account}</if>
-        </where>
-    </delete>
 
     <update id="updateUser" parameterType="User">
         UPDATE user SET
@@ -32,19 +23,26 @@
             <if test="activited != null">`activited`=#{activited},</if>
         </set>
         WHERE
-            account=#{account}
+        account=#{account}
     </update>
+    
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM user
+        <where>
+            <if test="account != null">and account=#{account}</if>
+        </where>
+    </delete>
 
-    <select id="selectUser" parameterType="String" resultType="userMap">
+    <select id="selectUser" parameterType="String" resultMap="userMap">
         SELECT `id`, `account`, `passwd`, `email`, `create_time`, `valied`, `activited` from user
         WHERE
-            account=#{account}
+        account=#{account}
         limit 1
     </select>
 
-    <select id="selectUserList" parameterType="String" resultType="userMap">
+    <select id="selectUserList" parameterType="String" resultMap="userMap">
         SELECT `id`, `account`, `passwd`, `email`, `create_time`, `valied`, `activited` from user
         WHERE
-            account=#{account}
+        account=#{account}
     </select>
 </mapper>

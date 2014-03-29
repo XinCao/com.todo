@@ -145,7 +145,9 @@
         </data>
         <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
             <config-files>
-                <config-file>web/WEB-INF/todo-servlet.xml</config-file>
+                <config-file>web/WEB-INF/config/app.xml</config-file>
+                <config-file>web/WEB-INF/config/mybatis.xml</config-file>
+                <config-file>web/WEB-INF/config/todo-servlet.xml</config-file>
             </config-files>
             <config-file-groups>
                 <config-file-group name="默认组"/>

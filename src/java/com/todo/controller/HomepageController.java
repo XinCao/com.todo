@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 主界面显示（产品的介绍）
- * 
+ *
  * @author caoxin
  */
 @Controller
@@ -16,6 +16,7 @@ public class HomepageController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showAction(Map<String, Object> map) {
+        map.put("test", "caoxin");
         return "homepage";
     }
 }

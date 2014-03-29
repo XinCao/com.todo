@@ -1,0 +1,3 @@
+#include("shared/header.vm")
+<h1>hao are you!</h1>
+#include("shared/footer.vm")
