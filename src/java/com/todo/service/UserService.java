@@ -2,6 +2,7 @@ package com.todo.service;
 
 import com.todo.mapper.UserMapper;
 import com.todo.model.User;
+import com.todo.util.MdImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class UserService {
         if (user == null) {
             return;
         }
+        user.setPasswd(MdImplement.encodeMD5To32(user.getPasswd().getBytes()));
         this.userMapper.insertUser(user);
     }
 

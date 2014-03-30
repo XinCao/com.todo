@@ -16,7 +16,6 @@ public class HomepageController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showAction(Map<String, Object> map) {
-        map.put("test", "caoxin");
         return "homepage";
     }
 }
