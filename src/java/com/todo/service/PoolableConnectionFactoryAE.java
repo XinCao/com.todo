@@ -21,8 +21,7 @@ public class PoolableConnectionFactoryAE extends PoolableConnectionFactory {
     }
 
     @Override
-    public void validateConnection(Connection conn)
-            throws SQLException {
+    public void validateConnection(Connection conn) throws SQLException {
         if (conn.isClosed()) {
             throw new SQLException("validateConnection: connection closed");
         }
