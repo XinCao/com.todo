@@ -16,9 +16,8 @@
 
     <delete id="deleteSchedule" parameterType="Schedule">
         DELETE FROM schedule
-        <where>
-            <if test="account != null">and account=#{account}</if>
-        </where>
+        WHERE
+        account=#{account} 
     </delete>
 
     <update id="updateSchedule" parameterType="Schedule">
@@ -26,9 +25,7 @@
         <set>
             <if test="status != null">and status=#{status}</if>
         </set>
-        <where>
-            <if test="account != null">and account=#{account}</if>
-        </where>
+        account=#{account}
     </update>
 
     <select id="selectSchedule" parameterType="Schedule" resultMap="scheduleMap">

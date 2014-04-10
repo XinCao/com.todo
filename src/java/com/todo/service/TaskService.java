@@ -3,6 +3,8 @@ package com.todo.service;
 import com.todo.mapper.TaskMapper;
 import com.todo.model.Task;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class TaskService {
 
+    private static final Logger logger = LoggerFactory.getLogger(TaskService.class);
+
     @Autowired
     private TaskMapper taskMapper;
 
     public void addTask(Task task) {
         if (task == null) {
+            logger.warn("param is NULL");
             return;
         }
         this.taskMapper.insertTask(task);
@@ -25,6 +30,7 @@ public class TaskService {
 
     public void removeTask(Task task) {
         if (task == null) {
+            logger.warn("param is NULL");
             return;
         }
         this.taskMapper.deleteTask(task);
@@ -32,6 +38,7 @@ public class TaskService {
 
     public void updateTask(Task task) {
         if (task == null) {
+            logger.warn("param is NULL");
             return;
         }
         this.taskMapper.updateTask(task);
@@ -39,6 +46,7 @@ public class TaskService {
 
     public List<Task> getTasks(Task task) {
         if (task == null) {
+            logger.warn("param is NULL");
             return null;
         }
         return this.taskMapper.selectTaskList(task);
@@ -46,6 +54,7 @@ public class TaskService {
 
     public Task getTask(Task task) {
         if (task == null) {
+            logger.warn("param is NULL");
             return null;
         }
         return this.taskMapper.selectTask(task);

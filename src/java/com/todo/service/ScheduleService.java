@@ -3,6 +3,8 @@ package com.todo.service;
 import com.todo.mapper.ScheduleMapper;
 import com.todo.model.Schedule;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,10 +14,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ScheduleService {
 
+    private static final Logger logger = LoggerFactory.getLogger(ScheduleService.class);
     private ScheduleMapper scheduleMapper;
 
     public void addSchedule(Schedule schedule) {
         if (schedule == null) {
+            logger.warn("param is NULL");
             return;
         }
         this.scheduleMapper.insertSchedule(schedule);
@@ -23,6 +27,7 @@ public class ScheduleService {
 
     public void removeSchedule(Schedule schedule) {
         if (schedule == null) {
+            logger.warn("param is NULL");
             return;
         }
         this.scheduleMapper.deleteSchedule(schedule);
@@ -30,6 +35,7 @@ public class ScheduleService {
 
     public void updateSchedule(Schedule schedule) {
         if (schedule == null) {
+            logger.warn("param is NULL");
             return;
         }
         this.scheduleMapper.updateSchedule(schedule);
@@ -37,6 +43,7 @@ public class ScheduleService {
 
     public List<Schedule> getSchedules(Schedule schedule) {
         if (schedule == null) {
+            logger.warn("param is NULL");
             return null;
         }
         return this.scheduleMapper.selectScheduleList(schedule);
@@ -44,8 +51,10 @@ public class ScheduleService {
 
     public Schedule getSchedule(Schedule schedule) {
         if (schedule == null) {
+            logger.warn("param is NULL");
             return null;
         }
         return this.scheduleMapper.selectSchedule(schedule);
     }
+
 }

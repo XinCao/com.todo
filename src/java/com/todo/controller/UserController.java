@@ -2,7 +2,6 @@ package com.todo.controller;
 
 import com.todo.model.User;
 import com.todo.service.UserService;
-import com.todo.util.ValidateString;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,18 +37,9 @@ public class UserController {
     @RequestMapping(value = "/do_register_user", method = RequestMethod.POST)
     public String doRegisterUserAction(@ModelAttribute User user) {
         String page;
-        boolean isOk = true;
-        if (user.getAccount() == null || user.getAccount().length() < 6 && !ValidateString.isCommonStr(user.getAccount())) {
-            isOk = false;
-        }
-        if (user.getPasswd() == null || user.getPasswd().length() < 6 && !ValidateString.isCommonStr(user.getPasswd())) {
-            isOk = false;
-        }
-        if (user.getEmail() == null || !ValidateString.isMailStr(user.getEmail())) {
-            isOk = false;
-        }
+        boolean isOk = userService.createUser(user);
         if (isOk) {
-            userService.addUser(user);
+            userService.createUser(user);
             page = "/user/login_form_user";
         } else {
             page = "/user/register_form_user";
@@ -69,6 +59,7 @@ public class UserController {
 
     /**
      * 用户登陆
+     * 登录包括两部分内容，1.身份识别，2权限限制（缺少）
      * 
      * @param user
      * @return 
@@ -76,15 +67,11 @@ public class UserController {
     @RequestMapping(value = "/do_login_user", method = RequestMethod.POST)
     public String doLoginUserAction(@ModelAttribute User user) {
         String page;
-        boolean isOk = true;
-        if (user.getAccount() == null || user.getAccount().length() < 6 && !ValidateString.isCommonStr(user.getAccount())) {
-            isOk = false;
-        }
-        if (user.getPasswd() == null || user.getPasswd().length() < 6 && !ValidateString.isCommonStr(user.getPasswd())) {
-            isOk = false;
-        }
+        boolean isOk = userService.loginCheck(user);
         if (isOk) {
-            this.userService.addUser(user);
+            /**
+             * 这里应该添加权限
+             */
             page = "task/wait_to_be_done_task";
         } else {
             page = "/user/login_form_user";

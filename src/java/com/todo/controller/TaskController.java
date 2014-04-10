@@ -18,6 +18,7 @@ public class TaskController {
 
     @Autowired
     private TaskService taskService;
+
     /**
      * 待办任务
      *
@@ -80,7 +81,7 @@ public class TaskController {
      * @return
      */
     @RequestMapping(value = "/finish_task", method = RequestMethod.GET)
-    public String showFinishTask(Map<String, Object> map) {
+    public String showFinishTaskAction(Map<String, Object> map) {
         return "task/finish_task";
     }
 }

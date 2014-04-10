@@ -49,7 +49,7 @@
     </update>
 
     <select id="selectTask" parameterType="Task" resultMap="taskMap">
-        SELECT <include refid="taskColumns"/>  from task
+        SELECT `id`, <include refid="taskColumns"/>  from task
         <where>
             <if test="sendorAccount != null">and sendor_account=#{sendorAccount}</if>
             <if test="receiverAccount != null">and receiver_account=#{receiverAccount}</if>
@@ -58,7 +58,7 @@
     </select>
 
     <select id="selectTaskList" parameterType="Task" resultMap="taskMap">
-        SELECT <include refid="taskColumns"/>  from task
+        SELECT `id`, <include refid="taskColumns"/>  from task
         <where>
             <if test="sendorAccount != null">and sendor_account=#{sendorAccount}</if>
             <if test="receiverAccount != null">and receiver_account=#{receiverAccount}</if>

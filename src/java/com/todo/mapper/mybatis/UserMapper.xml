@@ -35,14 +35,14 @@
     </delete>
 
     <select id="selectUser" parameterType="String" resultMap="userMap">
-        SELECT <include refid="userColumns"/> from user
+        SELECT `id`, <include refid="userColumns"/> from user
         WHERE
         account=#{account}
         limit 1
     </select>
 
     <select id="selectUserList" parameterType="String" resultMap="userMap">
-        SELECT <include refid="userColumns"/> from user
+        SELECT `id`, <include refid="userColumns"/> from user
         WHERE
         account=#{account}
     </select>
