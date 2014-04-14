@@ -71,4 +71,9 @@ public class User {
     public void setActivited(int activited) {
         this.activited = activited;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", account=" + account + ", passwd=" + passwd + ", email=" + email + ", createTime=" + createTime + ", valied=" + valied + ", activited=" + activited + '}';
+    }
 }
