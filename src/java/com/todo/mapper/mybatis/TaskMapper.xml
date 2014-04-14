@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todo.mapper.TaskMapper">
+
     <sql id="taskColumns"> `sendor_account` , `receiver_account` , `task_title` , `task_content` , `finish_time` , `first_remind_time` , `second_remind_time` , `priority`, `media`, `status`</sql>
+
     <resultMap id="taskMap" type="com.todo.model.Task">
         <result property="id" column="id" />
         <result property="sendorAccount" column="sendor_account"/>
@@ -29,7 +31,7 @@
     </delete>
 
     <update id="updateTask" parameterType="Task">
-        UPDATE task SET
+        UPDATE task
         <set>
             <if test="sendorAccount != null">and sendor_account=#{sendorAccount}</if>
             <if test="receiverAccount != null">and receiver_account=#{receiverAccount}</if>
@@ -64,4 +66,6 @@
             <if test="receiverAccount != null">and receiver_account=#{receiverAccount}</if>
         </where>
     </select>
+
+    <cache />
 </mapper>
