@@ -40,7 +40,7 @@ public class UserMapperTest extends TestCase {
         user.setEmail("jingxin191314@foxmail.com");
         user.setPasswd("password");
         this.userMapper.insertUser(user);
-        user = this.userMapper.selectUser(user.getAccount());
+        this.userMapper.selectUser(user.getAccount());
         Object o = memcachedCache.getObject("selectUser");
         assertNotNull(o);
         user = (User)o;

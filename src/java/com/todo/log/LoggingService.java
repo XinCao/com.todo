@@ -19,9 +19,7 @@ package com.todo.log;
 import com.todo.commons.log4j.JuliToLog4JHandler;
 import com.todo.commons.log4j.ThrowableAsMessageAwareFactory;
 import com.todo.commons.log4j.exceptions.Log4jInitializationError;
-import java.io.File;
 import java.lang.reflect.Field;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Handler;
 import java.util.logging.LogManager;
@@ -53,31 +51,15 @@ public class LoggingService {
     /**
      * Default log4j configuration file
      */
-    public static String loggerConfigFile = "config/log4j.xml";
+    public static String loggerConfigFile = "log4j.xml";
     /**
      * Is Logging initialized or not?
      */
     private static boolean initialized;
 
-    /**
-     * Initializes logging system with {@link #loggerConfigFile default}
-     * config file
-     *
-     * @throws com.aionemu.commons.log4j.exceptions.Log4jInitializationError if
-     * can't initialize logging
-     */
     public void init() throws Log4jInitializationError {
-        File f = new File(loggerConfigFile);
-
-        if (!f.exists()) {
-            throw new Log4jInitializationError("Missing file " + f.getPath());
-        }
-
-        try {
-            init(f.toURI().toURL());
-        } catch (MalformedURLException e) {
-            throw new Log4jInitializationError("Can't initalize logging", e);
-        }
+        URL url = getClass().getResource(loggerConfigFile);
+        init(url);
     }
 
     /**
@@ -87,7 +69,7 @@ public class LoggingService {
      * @throws com.aionemu.commons.log4j.exceptions.Log4jInitializationError if
      * can't initialize logging
      */
-    public  void init(URL url) throws Log4jInitializationError {
+    public void init(URL url) throws Log4jInitializationError {
         synchronized (LoggingService.class) {
             if (initialized) {
                 return;
