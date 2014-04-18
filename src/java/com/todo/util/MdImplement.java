@@ -2,8 +2,6 @@ package com.todo.util;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import java.security.MessageDigest;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * MD 消息摘要组建

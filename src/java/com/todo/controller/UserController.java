@@ -3,6 +3,7 @@ package com.todo.controller;
 import com.todo.model.User;
 import com.todo.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,10 +22,12 @@ public class UserController {
     /**
      * 注册用户表单
      * 
+     * @param model
      * @return 
      */
     @RequestMapping(value = "/register_form_user", method = RequestMethod.GET)
-    public String registerFormUserAction() {
+    public String registerFormUserAction(Model model) {
+        model.addAttribute("User", new User());
         return "/user/register_form_user";
     }
 

@@ -11,6 +11,7 @@ public class User {
     private int id;
     private String account;
     private String passwd;
+    private String againPasswd;
     private String email;
     private Date createTime;
     private int valied; // 是否有效
@@ -40,6 +41,14 @@ public class User {
         this.passwd = passwd;
     }
 
+    public String getAgainPasswd() {
+        return againPasswd;
+    }
+
+    public void setAgainPasswd(String againPasswd) {
+        this.againPasswd = againPasswd;
+    }
+    
     public String getEmail() {
         return email;
     }

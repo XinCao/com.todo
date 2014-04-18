@@ -1,2 +1,83 @@
 #include("shared/header.vm")
+<form id="register_form" class="form-horizontal">
+    <legend>注册</legend>
+    <div class="control-group">
+        <label class="control-label" for="account">帐号</label>
+        <div class="controls">
+            #springBind("User.account")
+            <input id="account" name="account" type="text" placeholder="Account" value="$!User.account">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="email">邮箱</label>
+        <div class="controls">
+            #springBind("User.email")
+            <input id="email" name="email" type="text" placeholder="E-mail" value="$!User.email">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="password">密码</label>
+        <div class="controls">
+            #springBind("User.passwd")
+            <input id="password" name="password" type="password" placeholder="Password" value="$!User.passwd">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="again_password">确认密码</label>
+        <div class="controls">
+            #springBind("User.againPasswd")
+            <input id="again_password" name="again_password" type="password" placeholder="Again Password" value="$!User.againPasswd">
+        </div>
+    </div>
+    <button type="submit" class="btn">提交</button>
+</form>
+<script type="text/javascript">
+    $(document).ready(function(){
+       $("#register_form").validate({
+        onkeyup:false,
+        rules: {
+            "account": {
+                required: true,
+                accountCheck: true
+            },
+            "email": {
+                required: true,
+                isEmail: true
+            },
+            "password": {
+                required: true,
+                rangelength: [6, 15]
+            },
+            "again_password": {
+                required: true,
+                rangelength: [6, 15],
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            "account": {
+                required: "请输入帐号",
+                accountCheck: "请输入6-20位字母开头的字母或数字和下划线"
+            },
+            "email": {
+                required: "请输入邮箱",
+                isEmail: "请正确填写邮箱格式"
+            }
+            "password": {
+                required: "请输入密码",
+                rangelength: "密码长度为6-15位"
+            },
+            "again_password": {
+                required: "请再次输入密码",
+                rangelength: "密码长度为6-15位",
+                equalTo: "两次输入密码不相同"
+            }
+        },
+        errorElement:"font",
+        errorPlacement: function(error, element){
+            error.appendTo(element.parent().find(".tipinfo"));
+        },
+        success:"valid"
+    });
+});
 #include("shared/footer.vm")
