@@ -36,25 +36,21 @@
             </div>
             <div class="jumbotron">
                 <h2>产品说明</h2>
-                <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+                <p class="lead">办公核心，国内最高效时间任务管理工具。独有融合GTD（时间管理方法）的日历时间线，帮助用户进行事务计划的智能安排和备忘提醒。引入创新组织协作模式，在多款同类产品中独具跨平台任务分法、反馈、追踪功能。</p>
+                <p><a class="btn btn-lg btn-success" href="/user/login_form_user" role="button">登录</a></p>
             </div>
             <div class="row marketing">
                 <div class="col-lg-6">
-                    <h4>Subheading</h4>
-                    <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-                    <h4>Subheading</h4>
-                    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-                    <h4>Subheading</h4>
-                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                    <h4>多平台同步</h4>
+                    <p>信息云端存储推送，同时支持各主流智能手机系统及PC和手机浏览器</p>
+                    <h4>组织管理</h4>
+                    <p>首创引入组织管理及多重身份切换概念，符合企业及团队用户需求</p>
                 </div>
                 <div class="col-lg-6">
-                    <h4>Subheading</h4>
-                    <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-                    <h4>Subheading</h4>
-                    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-                    <h4>Subheading</h4>
-                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                    <h4>日程提醒</h4>
+                    <p>以日历时间线形式展示已办待办事项，人性化高级备忘提醒，让个人工作生活更规律</p>
+                    <h4>移动办公</h4>
+                    <p>支持多成员间的事务下单、转发、状态反馈和实时进度查阅，打破时间、地点、媒介限制，让工作更高效</p>
                 </div>
             </div>
             <div class="footer">

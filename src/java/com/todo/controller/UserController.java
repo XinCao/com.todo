@@ -53,10 +53,12 @@ public class UserController {
     /**
      * 登陆用户表单
      * 
+     * @param model
      * @return 
      */
     @RequestMapping(value = "/login_form_user", method = RequestMethod.GET)
-    public String loginFormUserAction() {
+    public String loginFormUserAction(Model model) {
+        model.addAttribute("User", new User());
         return "/user/login_form_user";
     }
 
