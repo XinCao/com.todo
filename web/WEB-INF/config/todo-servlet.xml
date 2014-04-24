@@ -22,4 +22,11 @@
         <property name="suffix" value=".vm"/>
         <property name="contentType" value="text/html;charset=utf-8" />
     </bean>
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <bean class="com.todo.controller.UserRoleInterceptor"/>
+            </list>
+        </property>
+    </bean>
 </beans>
