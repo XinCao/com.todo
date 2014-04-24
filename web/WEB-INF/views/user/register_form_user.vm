@@ -1,3 +1,4 @@
+#include("shared/macro_ui.vm")
 #include("shared/header.vm")
 <style type="text/css">
     body {
@@ -30,18 +31,37 @@
       padding: 7px 9px;
     }
 </style>
-<form class="form-signin" action="/user/do_register_user" method="post">
+<form id="register_form" class="form-signin" action="/user/do_register_user" method="post">
     <h2 class="form-signin-heading">请注册</h2>
-    #springBind("User.account")
-    <input id="account" name="account" type="text" class="input-block-level" placeholder="帐号" value="$!User.account">
-    #springBind("User.email")
-    <input id="email" name="email" type="text" class="input-block-level" placeholder="邮箱" value="$!User.email">
-    #springBind("User.passwd")
-    <input id="password" name="password" type="password" class="input-block-level" placeholder="密码" value="$!User.passwd">
-    #springBind("User.againPasswd")
-    <input id="again_password" name="again_password" type="password" class="input-block-level" placeholder="确认密码" value="$!User.againPasswd">
+    #input("User.account", "text","帐号")
+    #input("User.email", "text", "邮箱")
+    #input("User.passwd", "password", "密码")
+    #input("User.againPasswd", "password", "确认密码")
     <div class="row-fluid">
         <button class="btn btn-large btn-block btn-primary" type="submit">注册</button>
     </div>
 </form>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#register_form").validate({
+            rules: {
+                account: {
+                    required: true,
+                    rangelength:[6,25]
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                passwd: {
+                    required: true
+                },
+                againPasswd: {
+                    required: true,
+                    equalTo: "#password"
+                }
+            }
+        });
+    });
+</script>
 #include("shared/footer.vm")

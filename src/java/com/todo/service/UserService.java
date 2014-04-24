@@ -3,7 +3,6 @@ package com.todo.service;
 import com.todo.mapper.UserMapper;
 import com.todo.model.User;
 import com.todo.util.MdImplement;
-import com.todo.util.ValidateString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +27,12 @@ public class UserService {
      * @return 
      */
     public boolean createUser(User user) {
-        boolean isOk = this.inputUserInfoCheck(user);
-        if (isOk) {
+        if (user.againPasswdOk()) {
             user.setPasswd(MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes()));
             this.userMapper.insertUser(user);
+            return true;
         }
-        return isOk;
+        return false;
     }
 
     /**
@@ -43,13 +42,12 @@ public class UserService {
      * @return 
      */
     public boolean loginCheck(User user) {
-        boolean isOk = this.inputUserInfoCheck(user);
-        if (isOk) {
-            String inputPass = MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes());
-            String pass = this.getUser(user.getAccount()).getPasswd();
-            if (!inputPass.trim().equalsIgnoreCase(inputPass)) {
-                isOk = false;
-            }
+        boolean isOk = false;
+        String inputPass = MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes());
+        String pass = this.getUser(user.getAccount()).getPasswd();
+        if (inputPass.trim().equalsIgnoreCase(inputPass)) {
+            isOk = true;
+            // 添加权限
         }
         return isOk;
     }
@@ -68,29 +66,5 @@ public class UserService {
             return null;
         }
         return userMapper.selectUser(account);
-    }
-
-    /**
-     * 表单输入数据进行检查
-     * 
-     * @param user
-     * @return 
-     */
-    private boolean inputUserInfoCheck (User user) {
-        if (user == null) {
-            logger.warn("param is NULL");
-            return false;
-        }
-        boolean isOk = true;
-        if (user.getAccount() == null || user.getAccount().length() < 6 && !ValidateString.isCommonStr(user.getAccount())) {
-            isOk = false;
-        }
-        if (user.getPasswd() == null || user.getPasswd().length() < 6 && !ValidateString.isCommonStr(user.getPasswd())) {
-            isOk = false;
-        }
-        if (user.getEmail() == null || !ValidateString.isMailStr(user.getEmail())) {
-            isOk = false;
-        }
-        return isOk;
     }
 }

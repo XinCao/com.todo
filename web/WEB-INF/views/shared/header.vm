@@ -13,7 +13,7 @@
 <html class="not-ie" lang="en">
     <head>
         <meta charset="utf-8">
-        <title>todo</title>
+        <title>Todo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="日常事务记录工具">
         <meta name="author" content="jingxin191314@foxmail.com">
@@ -24,8 +24,9 @@
         <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.v2.css">
         <link rel="stylesheet" type="text/css" href="/css/button.css">
         <link rel="shortcut icon" href="/img/favicon.png">
-        <script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/js/jquery-validate.js"></script>
+        <script type="text/javascript" src="/js/jquery.validate.messages.zh-cn.js"></script>
         <script type="text/javascript" src="/js/bootstrap.v2.min.js"></script>
     </head>
     <body>

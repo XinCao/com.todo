@@ -35,6 +35,7 @@ public class ScheduleController {
     /**
      * 创建日程
      * 
+     * @param schedule
      * @return 
      */
     @RequestMapping(value = "/do_create_schedule", method = RequestMethod.GET)

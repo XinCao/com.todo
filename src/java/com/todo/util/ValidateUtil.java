@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
  *
  * @author caoxin
  */
-public class ValidateString {
+public class ValidateUtil {
 
-    private static final Pattern mailPattern = Pattern.compile("(?:\\w[-.\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3}$)");
+    private static final Pattern mailPattern = Pattern.compile(PatternConstant.mail);
 
     private static Matcher getMailMatcher(String mailStr) {
         return mailPattern.matcher(mailStr);
@@ -22,7 +22,7 @@ public class ValidateString {
     /**
      * 点分十进制IP
      */
-    private static final Pattern ipPattern = Pattern.compile("\\d+\\.\\d+\\.\\d+\\.\\d+");
+    private static final Pattern ipPattern = Pattern.compile(PatternConstant.ip);
 
     public static Matcher getIpMatcher(String ipStr) {
         return ipPattern.matcher(ipStr);
@@ -34,7 +34,7 @@ public class ValidateString {
     /**
      * 一般字符串校验（字母， 数字，下划线构成）
      */
-    private static final Pattern commonPattern = Pattern.compile("^\\w+$");
+    private static final Pattern commonPattern = Pattern.compile(PatternConstant.common);
 
     public static boolean isCommonStr(String commonStr) {
         return commonPattern.matcher(commonStr).matches();
