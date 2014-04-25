@@ -1,6 +1,7 @@
 package com.todo.model;
 
 import com.todo.util.PatternConstant;
+import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size;
  *
  * @author caoxin
  */
-public class User {
+public class User implements Serializable {
 
     private int id;
     @NotNull(message = Message_zh_cn.required)
@@ -19,8 +20,10 @@ public class User {
     private String account;
     @NotNull(message = Message_zh_cn.required)
     @Size(min = 6, max = 255, message = Message_zh_cn.rangelength)
+    @Pattern(regexp = PatternConstant.common, message = Message_zh_cn.regex)
     private String passwd;
     @Size(min = 6, max = 255, message = Message_zh_cn.rangelength)
+    @Pattern(regexp = PatternConstant.common, message = Message_zh_cn.regex)
     private String againPasswd;
     @Pattern(regexp = PatternConstant.mail, message = Message_zh_cn.email)
     private String email;

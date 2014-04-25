@@ -42,12 +42,13 @@ public class UserService {
      * @return 
      */
     public boolean loginCheck(User user) {
-        boolean isOk = false;
+        boolean isOk = true;
         String inputPass = MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes());
         String pass = this.getUser(user.getAccount()).getPasswd();
-        if (inputPass.trim().equalsIgnoreCase(inputPass)) {
-            isOk = true;
+        if (inputPass.trim().equalsIgnoreCase(pass)) {
             // 添加权限
+        } else {
+            isOk = false;
         }
         return isOk;
     }

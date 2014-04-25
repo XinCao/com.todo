@@ -1,4 +1,3 @@
-#include("shared/macro_ui.vm")
 #include("shared/header.vm")
 <style type="text/css">
     body {
@@ -33,10 +32,18 @@
 </style>
 <form id="register_form" class="form-signin" action="/user/do_register_user" method="post">
     <h2 class="form-signin-heading">请注册</h2>
-    #input("User.account", "text","帐号")
-    #input("User.email", "text", "邮箱")
-    #input("User.passwd", "password", "密码")
-    #input("User.againPasswd", "password", "确认密码")
+    #springBind("User.account")
+    <input id="${status.expression}" name="${status.expression}" type="text" class="input-block-level" placeholder="帐号" value="$!status.value">
+    #if ($!{status.errorMessage}) <p class="text-error">$!{status.errorMessage}</p> #end
+    #springBind("User.email")
+    <input id="${status.expression}" name="${status.expression}" type="text" class="input-block-level" placeholder="邮箱" value="$!status.value">
+    #if ($!{status.errorMessage}) <p class="text-error">$!{status.errorMessage}</p> #end
+    #springBind("User.passwd")
+    <input id="${status.expression}" name="${status.expression}" type="password" class="input-block-level" placeholder="密码" value="$!status.value">
+    #if ($!{status.errorMessage}) <p class="text-error">$!{status.errorMessage}</p> #end
+    #springBind("User.againPasswd")
+    <input id="${status.expression}" name="${status.expression}" type="password" class="input-block-level" placeholder="确认密码" value="$!status.value">
+    #if ($!{status.errorMessage}) <p class="text-error">$!{status.errorMessage}</p> #end
     <div class="row-fluid">
         <button class="btn btn-large btn-block btn-primary" type="submit">注册</button>
     </div>
@@ -58,7 +65,7 @@
                 },
                 againPasswd: {
                     required: true,
-                    equalTo: "#password"
+                    equalTo: "#passwd"
                 }
             }
         });

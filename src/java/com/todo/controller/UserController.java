@@ -3,6 +3,7 @@ package com.todo.controller;
 import com.todo.model.User;
 import com.todo.service.UserService;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/user")
 public class UserController {
 
+    @Autowired
     private UserService userService;
 
     /**
@@ -78,9 +80,9 @@ public class UserController {
             ok = this.userService.loginCheck(user);
         }
         if (ok) {
-            return "redirect:task/wait_to_be_done_task";
+            return "/task/wait_to_be_done_task";
         } else {
-            return "/user/login_form_user";
+            return "redirect:login_form_user";
         }
     }
 }
