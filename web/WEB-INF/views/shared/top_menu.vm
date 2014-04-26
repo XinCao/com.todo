@@ -9,8 +9,8 @@
             <a class="brand" href="/">Todo</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                  <li #if($top_menu =="task") class="active" #end><a href="/task/wait_to_be_done_task">任务</a></li>
-                  <li #if($top_menu =="schedule") class="active" #end><a href="/schedule/create_form_schedule">日程</a></li>
+                  <li #if($top_menu == "task") class="active" #end><a href="/task/wait_to_be_done_task">任务</a></li>
+                  <li #if($top_menu == "schedule") class="active" #end><a href="/schedule/create_form_schedule">日程</a></li>
                 </ul>
             </div>
           </div>

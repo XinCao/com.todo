@@ -1,7 +1,8 @@
 #set($top_menu="task")
+#set($side_bar="/task/collection_task")
 #include("shared/header.vm")
-#include("shared/top_menu.vm")
-#include("shared/task_side_bar.vm")
+#parse("shared/top_menu.vm")
+#parse("shared/task_side_bar.vm")
 <div class="row-fluid">
 </div>
 #include("shared/footer.vm")

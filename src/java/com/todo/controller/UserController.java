@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * 用户管理
+ * 用户管理（没有用户帐号激活功能）
  *
  * @author caoxin
  */

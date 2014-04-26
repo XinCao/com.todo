@@ -22,12 +22,12 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">任务</li>
-              <li><a href="/task/wait_to_be_done_task">待办任务</a></li>
-              <li><a href="/task/collection_task">收集箱</a></li>
-              <li><a href="/task/expired_task">过期任务</a></li>
-              <li><a href="/task/received_task">接受到的任务</a></li>
-              <li><a href="/task/sent_task">发送的任务</a></li>
-              <li><a href="/task/finish_task">完成的任务</a></li>
+              <li #if($side_bar=="/task/wait_to_be_done_task") class="active" #end><a href="/task/wait_to_be_done_task">待办任务</a></li>
+              <li #if($side_bar=="/task/collection_task") class="active" #end><a href="/task/collection_task">收集箱</a></li>
+              <li #if($side_bar=="/task/expired_task") class="active" #end><a href="/task/expired_task">过期任务</a></li>
+              <li #if($side_bar=="/task/received_task") class="active" #end><a href="/task/received_task">接受到的任务</a></li>
+              <li #if($side_bar=="/task/sent_task") class="active" #end><a href="/task/sent_task">发送的任务</a></li>
+              <li #if($side_bar=="/task/finish_task") class="active" #end><a href="/task/finish_task">完成的任务</a></li>
             </ul>
           </div>
         </div>

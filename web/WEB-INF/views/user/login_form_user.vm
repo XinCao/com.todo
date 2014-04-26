@@ -31,7 +31,6 @@
     }
 </style>
 <form id="login_form" class="form-signin" action="/user/do_login_user" method="post">
-    <div id="check_account"></div>
     <h2 class="form-signin-heading">请登录</h2>
         #springBind("User.account")
         <input id="${status.expression}" name="${status.expression}" type="text" class="input-block-level" placeholder="帐号" value="$!status.value">
@@ -60,24 +59,6 @@
                 }
             }
         });
-        $("#account").change(
-            function() {
-                var account = $("#account").val();
-                $.ajax({
-                    url: "/user/ajax/check_account/" + account,
-                    dataType: "json",
-                    success: function (data) {
-                        if (data.is_ok === 1) {
-                            $("#check_account").addClass("alert alert-success");
-                            $("#check_account").html("帐号通过检测！");
-                        }
-                    },
-                    error: function (arg) {
-                        var e = arg;
-                    }
-                });
-            }
-        )
     });
 </script>
 #include("shared/footer.vm")
