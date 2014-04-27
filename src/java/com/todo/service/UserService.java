@@ -22,9 +22,9 @@ public class UserService {
 
     /**
      * 添加用户
-     * 
+     *
      * @param user
-     * @return 
+     * @return
      */
     public boolean createUser(User user) {
         if (user.againPasswdOk()) {
@@ -37,19 +37,22 @@ public class UserService {
 
     /**
      * 身份识别
-     * 
+     *
      * @param user
-     * @return 
+     * @return
      */
     public boolean loginCheck(User user) {
-        boolean isOk = true;
+        boolean isOk = false;
         String inputPass = MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes());
-        String pass = this.getUser(user.getAccount()).getPasswd();
-        if (inputPass.trim().equalsIgnoreCase(pass)) {
-            // 添加权限
-        } else {
-            isOk = false;
+        User realUser = this.getUser(user.getAccount());
+        if (realUser != null) {
+            String pass = realUser.getPasswd();
+            if (inputPass.trim().equalsIgnoreCase(pass)) {
+                isOk = true;
+                // 添加权限
+            }
         }
+
         return isOk;
     }
 

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  */
 public class UserRoleInterceptor extends HandlerInterceptorAdapter {
 
-    public static final String COMMON_USER_ROLE = "common_user_role";
+    private static final String COMMON_USER_ROLE = "common_user_role";
     private static final String defaultUrl = "/user/login_form_user";
 
     @Override
