@@ -22,16 +22,13 @@
         <property name="suffix" value=".vm"/>
         <property name="contentType" value="text/html;charset=utf-8" />
     </bean>
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-        <property name="order">
-            <value>1</value>
-        </property>
-        <property name="interceptors">
-            <list>
-                <bean class="com.todo.controller.UserRoleInterceptor"/>
-            </list>
-        </property>
-    </bean>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/schedule/**" />
+            <mvc:mapping path="/task/**" />
+            <bean class="com.todo.controller.UserRoleInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="order">
             <value>2</value>
