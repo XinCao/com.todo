@@ -3,6 +3,61 @@
 #include("shared/header.vm")
 #parse("shared/top_menu.vm")
 #parse("shared/task_side_bar.vm")
+<ul class="breadcrumb">
+    <li><a href="/task/collection_task">新建任务</a><span class="divider">/</span></li>
+</ul>
 <div class="row-fluid">
+    <form>
+        <div class="control-group">
+            <div class="controls">
+                <select class="span12">
+                    <option>接受者</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="text" class="span12" placeholder="任务标题">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="text" class="span12" placeholder="到期时间">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="text" class="span12" placeholder="备注">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="text" class="span12" placeholder="提醒">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="text" class="span12" placeholder="第二次提醒">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="radio">
+                <input type="radio" value="1" checked>低
+            </label>
+            <div class="control-group">
+                <label class="radio">
+                <input type="radio" value="2" checked>中
+            </label>
+            <div class="control-group">
+                <label class="radio">
+                <input type="radio" value="3" checked>高
+            </label>
+        </div>
+    </form>
 </div>
 #include("shared/footer.vm")
