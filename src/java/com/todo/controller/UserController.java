@@ -73,16 +73,16 @@ public class UserController {
      */
     @RequestMapping(value = "/do_login_user", method = RequestMethod.POST)
     public String doLoginUserAction(@Valid User user, BindingResult bindingResult) {
-        boolean ok;
+        boolean ok = true;
         if (bindingResult.hasErrors()) {
             ok = false;
         } else {
             ok = this.userService.loginCheck(user);
         }
         if (ok) {
-            return "/task/wait_to_be_done_task";
+            return "redirect:/user/do_login_user/session";
         } else {
-            return "redirect:login_form_user";
+            return "redirect:/user/login_form_user";
         }
     }
 }

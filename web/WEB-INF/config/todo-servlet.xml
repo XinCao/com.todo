@@ -23,10 +23,24 @@
         <property name="contentType" value="text/html;charset=utf-8" />
     </bean>
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="order">
+            <value>1</value>
+        </property>
         <property name="interceptors">
             <list>
                 <bean class="com.todo.controller.UserRoleInterceptor"/>
             </list>
         </property>
     </bean>
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order">
+            <value>2</value>
+        </property>
+        <property name="mappings">
+            <props>
+                <prop key="/user/do_login_user/session">loginUserController</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="loginUserController" class="com.todo.controller.LoginUserController"/>
 </beans>

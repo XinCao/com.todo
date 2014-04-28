@@ -3,9 +3,6 @@ package com.todo.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 import org.springframework.web.servlet.view.RedirectView;
@@ -14,8 +11,6 @@ import org.springframework.web.servlet.view.RedirectView;
  *
  * @author caoxin
  */
-@Controller
-@RequestMapping(value = "/user/do_login_user/session", method = RequestMethod.POST)
 public class LoginUserController extends AbstractController {
 
     private static final String COMMON_USER_ROLE = "common_user_role";

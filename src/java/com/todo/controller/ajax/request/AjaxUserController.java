@@ -24,7 +24,7 @@ public class AjaxUserController {
 
     @RequestMapping(value = "check_account/{check_account}", method = RequestMethod.GET)
     public @ResponseBody Map<String, String> checkAccountAction(@PathVariable("check_account") String account) {
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<String, String>();
         boolean isOk = userService.getUser(account) == null;
         if (isOk) {
             map.put("is_ok", "1");
