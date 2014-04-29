@@ -33,7 +33,7 @@
         </filter>
         <file>${LOG_HOME_DIR}\\log\\backup\\${REALM_ID}-login.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME_DIR}/log/backup/${REALM_ID}-login.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <fileNamePattern>${LOG_HOME_DIR}\\log\\backup\\${REALM_ID}-login.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>UTF-8</charset>
@@ -49,7 +49,7 @@
         </filter>
         <file>${LOG_HOME_DIR}\\log\\backup\\${REALM_ID}-error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME_DIR}/log/backup/${REALM_ID}-error.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <fileNamePattern>${LOG_HOME_DIR}\\log\\backup\\${REALM_ID}-error.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>UTF-8</charset>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,7 +50,6 @@ public class UserController {
         } else {
             this.userService.createUser(user);
             return "redirect:/user/login_form_user";
-
         }
     }
 
@@ -86,5 +86,15 @@ public class UserController {
         } else {
             return "redirect:/user/login_form_user";
         }
+    }
+
+    @RequestMapping(value = "do_activited_account/{account}", method = RequestMethod.GET)
+    public String doActivitedAccountAction(@PathVariable("account") String account) {
+        boolean ok;
+        ok = this.userService.doActivitedAccount(account.trim());
+        if (ok) {
+            return "redirect:/user/login_form_user";
+        }
+        return "redirect:/user/register_form_user";
     }
 }

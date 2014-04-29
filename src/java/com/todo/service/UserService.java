@@ -1,6 +1,7 @@
 package com.todo.service;
 
 import com.todo.mapper.UserMapper;
+import com.todo.model.ResultStatus;
 import com.todo.model.User;
 import com.todo.util.MdImplement;
 import org.slf4j.Logger;
@@ -30,6 +31,8 @@ public class UserService {
         if (user.againPasswdOk()) {
             user.setPasswd(MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes()));
             user.setUserRole(User.UserRole.COMMON_USER_ROLE.getId());
+            user.setActivited(ResultStatus.NO.getNo()); // 未激活状态
+            MailService.sendActivitedLink("localhost:8080", "/user/do_activited_account/" + user.getAccount(), user.getEmail());
             this.userMapper.insertUser(user);
             return true;
         }
@@ -47,7 +50,7 @@ public class UserService {
         User realUser = this.getUser(user.getAccount());
         if (realUser != null) {
             String pass = realUser.getPasswd();
-            if (user.getPasswd().trim().equalsIgnoreCase(pass)) {
+            if (user.getActivited() == ResultStatus.YES.getNo() && user.getPasswd().trim().equalsIgnoreCase(pass)) {
                 isOk = true;
                 user.setUserRole(realUser.getUserRole());
                 // 添加权限
@@ -55,6 +58,23 @@ public class UserService {
         }
 
         return isOk;
+    }
+
+    /**
+     * 激活帐号
+     * 
+     * @param account
+     * @return 
+     */
+    public boolean doActivitedAccount(String account) {
+        boolean ok = false;
+        User user = this.getUser(account);
+        if (user.getActivited() == ResultStatus.NO.getNo()) {
+            user.setActivited(ResultStatus.YES.getNo());
+            this.updateUser(user);
+            ok = true;
+        }
+        return ok;
     }
 
     public void updateUser(User user) {

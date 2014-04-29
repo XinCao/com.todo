@@ -6,11 +6,12 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account` varchar(255) NOT NULL,
   `passwd` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
   `create_time` datetime NOT NULL,
   `valied` int(11) NOT NULL,
   `activited` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `user_role` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`account`,`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ## 任务表

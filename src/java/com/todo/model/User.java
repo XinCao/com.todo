@@ -30,7 +30,7 @@ public class User implements Serializable {
     private String email;
     private Date createTime;
     private int valied; // 是否有效
-    private int activited; // 是否被激活
+    private int activited; // 是否被激活 1.为未激活, 2.为激活
     private int userRole; // 用户角色 1.为普通， 2.管理角色
 
     public int getId() {
