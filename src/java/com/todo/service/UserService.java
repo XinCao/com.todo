@@ -50,7 +50,7 @@ public class UserService {
         User realUser = this.getUser(user.getAccount());
         if (realUser != null) {
             String pass = realUser.getPasswd();
-            if (user.getActivited() == ResultStatus.YES.getNo() && user.getPasswd().trim().equalsIgnoreCase(pass)) {
+            if (realUser.getActivited() == ResultStatus.YES.getNo() && user.getPasswd().trim().equalsIgnoreCase(pass)) {
                 isOk = true;
                 user.setUserRole(realUser.getUserRole());
                 // 添加权限
@@ -62,9 +62,9 @@ public class UserService {
 
     /**
      * 激活帐号
-     * 
+     *
      * @param account
-     * @return 
+     * @return
      */
     public boolean doActivitedAccount(String account) {
         boolean ok = false;
