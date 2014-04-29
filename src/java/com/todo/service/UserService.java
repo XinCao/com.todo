@@ -21,7 +21,7 @@ public class UserService {
     private UserMapper userMapper;
 
     /**
-     * 添加用户
+     * 添加用户（普通角色）
      *
      * @param user
      * @return
@@ -29,6 +29,7 @@ public class UserService {
     public boolean createUser(User user) {
         if (user.againPasswdOk()) {
             user.setPasswd(MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes()));
+            user.setUserRole(User.UserRole.COMMON_USER_ROLE.getId());
             this.userMapper.insertUser(user);
             return true;
         }
@@ -43,12 +44,12 @@ public class UserService {
      */
     public boolean loginCheck(User user) {
         boolean isOk = false;
-        String inputPass = MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes());
         User realUser = this.getUser(user.getAccount());
         if (realUser != null) {
             String pass = realUser.getPasswd();
-            if (inputPass.trim().equalsIgnoreCase(pass)) {
+            if (user.getPasswd().trim().equalsIgnoreCase(pass)) {
                 isOk = true;
+                user.setUserRole(realUser.getUserRole());
                 // 添加权限
             }
         }

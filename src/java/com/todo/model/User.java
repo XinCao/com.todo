@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
  */
 public class User implements Serializable {
 
+    public static final String USER_ROLE = "user_role";
     private int id;
     @NotNull(message = Message_zh_cn.required)
     @Size(min = 6, max = 25, message = Message_zh_cn.rangelength)
@@ -30,6 +31,7 @@ public class User implements Serializable {
     private Date createTime;
     private int valied; // 是否有效
     private int activited; // 是否被激活
+    private int userRole; // 用户角色 1.为普通， 2.管理角色
 
     public int getId() {
         return id;
@@ -109,8 +111,48 @@ public class User implements Serializable {
         return isOk;
     }
 
+    public int getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
+    }
+    
     @Override
     public String toString() {
         return "User{" + "id=" + id + ", account=" + account + ", passwd=" + passwd + ", email=" + email + ", createTime=" + createTime + ", valied=" + valied + ", activited=" + activited + '}';
+    }
+
+    public enum UserRole {
+        
+        COMMON_USER_ROLE(1, "common"),
+        ADMIN_USER_ROLE(2, "common:admin")
+        ;
+
+        private int id;
+        private String key;
+
+        private UserRole(int id, String key) {
+            this.id = id;
+            this.key = key;
+        }
+
+        public int getId() {
+            return this.id;
+        }
+
+        public String getKey() {
+            return this.key;
+        }
+
+        public static UserRole fromId(int id) {
+            for (UserRole userRole : values()) {
+                if (userRole.getId() == id) {
+                    return userRole;
+                }
+            }
+            return null;
+        }
     }
 }

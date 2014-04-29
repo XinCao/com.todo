@@ -2,6 +2,7 @@ package com.todo.controller;
 
 import com.todo.model.User;
 import com.todo.service.UserService;
+import com.todo.util.MdImplement;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -74,13 +75,14 @@ public class UserController {
     @RequestMapping(value = "/do_login_user", method = RequestMethod.POST)
     public String doLoginUserAction(@Valid User user, BindingResult bindingResult) {
         boolean ok = true;
+        String inputPass = null;
         if (bindingResult.hasErrors()) {
             ok = false;
         } else {
-            ok = this.userService.loginCheck(user);
+            inputPass = MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes());
         }
         if (ok) {
-            return "redirect:/user/do_login_user/session";
+            return "redirect:/user/do_login_user/session?" + "account=" + user.getAccount() + "&passwd=" + inputPass;
         } else {
             return "redirect:/user/login_form_user";
         }
