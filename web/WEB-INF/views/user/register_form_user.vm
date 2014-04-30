@@ -31,14 +31,15 @@
     }
 </style>
 <form id="register_form" class="form-signin" action="/user/do_register_user" method="post">
-    <div id="check_account"></div>
     <h2 class="form-signin-heading">请注册</h2>
     #springBind("User.account")
     <input id="${status.expression}" name="${status.expression}" type="text" class="input-block-level" placeholder="帐号" value="$!status.value">
     #if ($!{status.errorMessage}) <p class="text-error">$!{status.errorMessage}</p> #end
+    <div id="check_account"></div>
     #springBind("User.email")
     <input id="${status.expression}" name="${status.expression}" type="text" class="input-block-level" placeholder="邮箱" value="$!status.value">
     #if ($!{status.errorMessage}) <p class="text-error">$!{status.errorMessage}</p> #end
+    <div id="check_email"></div>
     #springBind("User.passwd")
     <input id="${status.expression}" name="${status.expression}" type="password" class="input-block-level" placeholder="密码" value="$!status.value">
     #if ($!{status.errorMessage}) <p class="text-error">$!{status.errorMessage}</p> #end
@@ -82,6 +83,26 @@
                             if (data.is_ok === "1") {
                                 $("#check_account").addClass("alert alert-success");
                                 $("#check_account").html("帐号通过检测！");
+                            }
+                        },
+                        error: function (arg) {
+                            var e = arg;
+                        }
+                    });
+                }
+            }
+        );
+        $("#email").change(
+            function() {
+                var email = $("#email").val();
+                if (isEmail(email)) {
+                    $.ajax({
+                        url: "/user/ajax/check_email/" + email,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.is_ok === "1") {
+                                $("#check_email").addClass("alert alert-success");
+                                $("#check_email").html("邮箱通过检测！");
                             }
                         },
                         error: function (arg) {

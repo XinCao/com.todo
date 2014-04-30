@@ -15,7 +15,9 @@ public interface UserMapper {
 
     public void updateUser(User user);
 
-    public User selectUser(String account);
+    public User selectUserByAccount(String account);
+    
+    public User selectUserByEmail(String email);
 
     public List<User> selectUserList(User user);
 }

@@ -28,7 +28,7 @@ public class UserService {
      * @return
      */
     public boolean createUser(User user) {
-        if (user.againPasswdOk()) {
+        if (user.againPasswdOk() && !haveAccount(user.getAccount()) && !haveEmail(user.getEmail())) {
             user.setPasswd(MdImplement.encodeMD5To32(user.getPasswd().toLowerCase().getBytes()));
             user.setUserRole(User.UserRole.COMMON_USER_ROLE.getId());
             user.setActivited(ResultStatus.NO.getNo()); // 未激活状态
@@ -47,7 +47,7 @@ public class UserService {
      */
     public boolean loginCheck(User user) {
         boolean isOk = false;
-        User realUser = this.getUser(user.getAccount());
+        User realUser = this.getUserByAccount(user.getAccount());
         if (realUser != null) {
             String pass = realUser.getPasswd();
             if (realUser.getActivited() == ResultStatus.YES.getNo() && user.getPasswd().trim().equalsIgnoreCase(pass)) {
@@ -68,7 +68,7 @@ public class UserService {
      */
     public boolean doActivitedAccount(String account) {
         boolean ok = false;
-        User user = this.getUser(account);
+        User user = this.getUserByAccount(account);
         if (user.getActivited() == ResultStatus.NO.getNo()) {
             user.setActivited(ResultStatus.YES.getNo());
             this.updateUser(user);
@@ -85,11 +85,27 @@ public class UserService {
         this.userMapper.updateUser(user);
     }
 
-    public User getUser(String account) {
+    public User getUserByAccount(String account) {
         if (account == null || account.isEmpty()) {
             logger.warn("param is NULL");
             return null;
         }
-        return userMapper.selectUser(account);
+        return userMapper.selectUserByAccount(account);
+    }
+    
+    public User getUserByEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            logger.warn("param is NULL");
+            return null;
+        }
+        return userMapper.selectUserByEmail(email);
+    }
+
+    public boolean haveAccount(String account) {
+       return this.getUserByAccount(account) != null;
+    }
+
+    public boolean haveEmail(String email) {
+        return this.getUserByEmail(email) != null;
     }
 }

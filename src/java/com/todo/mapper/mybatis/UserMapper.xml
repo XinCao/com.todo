@@ -37,10 +37,17 @@
             and account=#{account}
     </delete>
 
-    <select id="selectUser" parameterType="String" resultMap="userMap">
+    <select id="selectUserByAccount" parameterType="String" resultMap="userMap">
         SELECT `id`, <include refid="userColumns"/> from user
         WHERE
             account=#{account}
+        limit 1
+    </select>
+
+    <select id="selectUserByEmail" parameterType="String" resultMap="userMap">
+        SELECT `id`, <include refid="userColumns"/> from user
+        WHERE
+            email=#{email}
         limit 1
     </select>
 
