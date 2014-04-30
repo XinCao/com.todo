@@ -45,11 +45,16 @@ public class UserController {
      */
     @RequestMapping(value = "/do_register_user", method = RequestMethod.POST)
     public String doRegisterUserAction(@Valid User user, BindingResult bindingResult) {
+        boolean ok;
         if (bindingResult.hasErrors()) {
-            return "/user/register_form_user";
+            ok = false;
         } else {
-            this.userService.createUser(user);
+            ok = this.userService.createUser(user);
+        }
+        if (ok) {
             return "redirect:/user/login_form_user";
+        } else {
+            return "/user/register_form_user";
         }
     }
 

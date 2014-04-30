@@ -93,10 +93,13 @@ public class UserService {
         return userMapper.selectUserByAccount(account);
     }
     
-    public User getUserByEmail(String email) {
+    public User getUserByEmail(String email) { // url中获取email时，会被过滤掉“.com”字符串
         if (email == null || email.isEmpty()) {
             logger.warn("param is NULL");
             return null;
+        }
+        if (!email.contains("com")) {
+            email = email.trim().concat(".com");
         }
         return userMapper.selectUserByEmail(email);
     }
