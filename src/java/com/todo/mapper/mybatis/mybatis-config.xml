@@ -4,11 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">  
 <configuration>
 
-<!--    <settings>
+    <settings>
         <setting name="cacheEnabled" value="true"/>
-        <setting name="lazyLoadingEnabled" value="true"/>
-        <setting name="aggressiveLazyLoading" value="false"/>
-    </settings>-->
+<!--        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>-->
+    </settings>
 
     <typeAliases>
         <typeAlias type="com.todo.model.User" alias="User"/>
