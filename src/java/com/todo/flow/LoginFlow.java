@@ -4,19 +4,20 @@ import com.todo.model.StringPair;
 import com.todo.model.User;
 import com.todo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author caoxin
  */
-@Flow(value = "loginFlow")
+@Service(value = "loginFlow") // 使用@Service， 因为，暂时不能实现Flow注解来替换
 public class LoginFlow extends AbstractFlow<StringPair> {
 
     @Autowired
     private UserService userService;
 
     @Override
-    protected boolean canAction(StringPair sp) {
+    protected boolean canPerform(StringPair sp) {
         User user = new User();
         user.setAccount(sp.getParam1());
         user.setPasswd(sp.getParam2());
@@ -24,7 +25,7 @@ public class LoginFlow extends AbstractFlow<StringPair> {
     }
 
     @Override
-    protected void actionImp(StringPair sp) {
+    protected void perform(StringPair sp) {
         logger.info("login ok!");
     }
 

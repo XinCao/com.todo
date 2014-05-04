@@ -15,7 +15,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * 动态注册bean（不能用于Flow层中，包含Flow属性的情况）
+ * 
  * @author caoxin
  */
 @Service
@@ -30,7 +31,6 @@ public class DynamicRegistrationBeanService implements ApplicationContextAware {
     }
 
     /**
-     * 动态注册bean（不能用于Flow层中，包含Folw属性的情况）
      *
      * @param beanName
      * @param clazz

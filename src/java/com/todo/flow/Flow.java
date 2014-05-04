@@ -13,7 +13,6 @@ import java.lang.annotation.Target;
 @Documented // 注解将被包含在javadoc中
 @Target(value = {ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME) // 注解会在class文件中存在，在运行时可以通过反射获取到
-@Base
 public @interface Flow {
 
     public String value() default "";

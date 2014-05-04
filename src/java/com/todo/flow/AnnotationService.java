@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * 注解扫描
  *
  * @author caoxin
  */
@@ -32,10 +33,10 @@ public class AnnotationService {
     }
 
     private void scanForFlow() {
-        this.flows = scanForAnnotion(new Class[]{Flow.class});
+        this.flows = scanForFlow(new Class[]{Flow.class});
     }
 
-    private Map<String, Object> scanForAnnotion(final Class[] annotations) {
+    private Map<String, Object> scanForFlow(final Class[] annotations) {
         final Map<String, Object> annotationMap = new HashMap<String, Object>();
         AnnotationDetector.TypeReporter reporter = new AnnotationDetector.TypeReporter() {
 
@@ -49,13 +50,13 @@ public class AnnotationService {
             public void reportTypeAnnotation(Class<? extends Annotation> annotationClass, String className) {
                 try {
                     Class clazz = Class.forName(className);
-                    Flow base = (Flow) clazz.getAnnotation(annotationClass);
-                    String value = base.value();
+                    Flow flow = (Flow) clazz.getAnnotation(annotationClass);
+                    String value = flow.value();
                     if (value == null || value.isEmpty()) {
                         throw new IllegalArgumentException("类 <" + className + "> 的 Annotation 设置不正确，value 属性必须设置");
                     }
                     annotationMap.put(value, clazz.newInstance());
-//                    drbs.registerBean(value, clazz); // 注册为bean
+                    drbs.registerBean(value, clazz); // 注册为bean
                 } catch (ClassNotFoundException ex) {
                     logger.error("没有找到类 <" + className + ">。error=" + ex.getMessage());
                     System.exit(1);
@@ -75,14 +76,5 @@ public class AnnotationService {
             System.exit(1);
         }
         return null;
-    }
-
-    public Map<String, Object> getFlows() {
-        return flows;
-    }
-
-    public static void main(String[] args) {
-        AnnotationService as = new AnnotationService();
-        logger.info(as.getFlows().toString());
     }
 }
