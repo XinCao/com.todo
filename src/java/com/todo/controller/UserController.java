@@ -93,6 +93,12 @@ public class UserController {
         }
     }
 
+    /**
+     * 激活帐号
+     *
+     * @param account
+     * @return
+     */
     @RequestMapping(value = "do_activited_account/{account}", method = RequestMethod.GET)
     public String doActivitedAccountAction(@PathVariable("account") String account) {
         boolean ok;

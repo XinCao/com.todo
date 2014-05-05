@@ -20,15 +20,15 @@ import org.springframework.stereotype.Service;
  * @author caoxin
  */
 @Service
-public class AnnotationService {
+public class AnnotationScanService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AnnotationService.class);
+    private static final Logger logger = LoggerFactory.getLogger(AnnotationScanService.class);
     private static final Pattern pattern = Pattern.compile("^\\s*([a-zA-Z0-9_]+)\\(([0-9,:\\s-]*)\\)\\s*$");
     private Map<String, Object> flows = new FastMap<String, Object>().shared();
     @Autowired
     private DynamicRegistrationBeanService drbs;
 
-    public AnnotationService() {
+    public AnnotationScanService() {
         this.scanForFlow();
     }
 
@@ -56,7 +56,7 @@ public class AnnotationService {
                         throw new IllegalArgumentException("类 <" + className + "> 的 Annotation 设置不正确，value 属性必须设置");
                     }
                     annotationMap.put(value, clazz.newInstance());
-                    drbs.registerBean(value, clazz); // 注册为bean
+//                    drbs.registerBean(value, clazz); // 注册为bean
                 } catch (ClassNotFoundException ex) {
                     logger.error("没有找到类 <" + className + ">。error=" + ex.getMessage());
                     System.exit(1);
