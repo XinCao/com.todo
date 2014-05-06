@@ -24,4 +24,5 @@
         </property>
     </bean>-->
     <import resource="mybatis.xml" />
+    <bean class="com.todo.util.TodoInfos" init-method="printAllInfos"/>
 </beans>

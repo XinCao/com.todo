@@ -1,6 +1,8 @@
 package com.todo.flow;
 
 import com.todo.service.DynamicRegistrationBeanService;
+import com.todo.util.MethodRuntimeStats;
+import static com.todo.util.RunnableStatsManager.dumpClassStats;
 import eu.infomas.annotation.AnnotationDetector;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -20,7 +22,7 @@ import org.springframework.stereotype.Service;
  * @author caoxin
  */
 @Service
-public class AnnotationScanService {
+public class AnnotationScanService extends MethodRuntimeStats {
 
     private static final Logger logger = LoggerFactory.getLogger(AnnotationScanService.class);
     private static final Pattern pattern = Pattern.compile("^\\s*([a-zA-Z0-9_]+)\\(([0-9,:\\s-]*)\\)\\s*$");
@@ -28,7 +30,7 @@ public class AnnotationScanService {
     @Autowired
     private DynamicRegistrationBeanService drbs;
 
-    public AnnotationScanService() {
+    public void initMethod() {
         this.scanForFlow();
     }
 
@@ -47,7 +49,7 @@ public class AnnotationScanService {
             }
 
             @Override
-            public void reportTypeAnnotation(Class<? extends Annotation> annotationClass, String className) {
+            public void reportTypeAnnotation(Class annotationClass, String className) {
                 try {
                     Class clazz = Class.forName(className);
                     Flow flow = (Flow) clazz.getAnnotation(annotationClass);
@@ -76,5 +78,20 @@ public class AnnotationScanService {
             System.exit(1);
         }
         return null;
+    }
+
+    public Map<String, Object> getFlows() {
+        return flows;
+    }
+
+    public static void main(String[] args) {
+        AnnotationScanService ass = new AnnotationScanService();
+        ass.runBlock((Object) null);
+        dumpClassStats(null);
+    }
+
+    @Override
+    protected void defineBlock(Object... params) {
+        this.initMethod();
     }
 }
