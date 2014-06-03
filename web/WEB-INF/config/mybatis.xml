@@ -87,4 +87,9 @@
             <value>com.todo.mapper.TaskMapper</value>
         </property>
     </bean>
+    <bean id="switchInfoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
+        <property name="mapperInterface">
+            <value>com.todo.mapper.SwitchInfoMapper</value>
+        </property>
+    </bean>
 </beans>
