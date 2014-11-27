@@ -1,5 +1,1 @@
-/build/
-/dist/
-/log/
-/nbproject/
-/todo/target/
+/target/*

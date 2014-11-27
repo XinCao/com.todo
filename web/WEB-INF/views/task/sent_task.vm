@@ -1,8 +1,0 @@
-#set($top_menu="task")
-#set($side_bar="/task/sent_task")
-#include("shared/header.vm")
-#parse("shared/top_menu.vm")
-#parse("shared/task_side_bar.vm")
-<div class="row-fluid">
-</div>
-#include("shared/footer.vm")
