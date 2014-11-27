@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xincao.todo_mvn.mapper.SwitchInfoMapper" >
+    <resultMap id="BaseResultMap" type="com.xincao.todo_mvn.model.SwitchInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <id column="account" property="account" jdbcType="VARCHAR" />
+        <result column="switch_info" property="switchInfo" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, account, switch_info
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xincao.todo_mvn.model.SwitchInfoKey" >
+        select
+        <include refid="Base_Column_List" />
+        from switch_info
+        where id = #{id,jdbcType=INTEGER}
+        and account = #{account,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.xincao.todo_mvn.model.SwitchInfoKey" >
+        delete from switch_info
+        where id = #{id,jdbcType=INTEGER}
+        and account = #{account,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.xincao.todo_mvn.model.SwitchInfo" >
+        insert into switch_info (id, account, switch_info
+        )
+        values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{switchInfo,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.xincao.todo_mvn.model.SwitchInfo" >
+        insert into switch_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="account != null" >
+                account,
+            </if>
+            <if test="switchInfo != null" >
+                switch_info,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="account != null" >
+                #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="switchInfo != null" >
+                #{switchInfo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xincao.todo_mvn.model.SwitchInfo" >
+        update switch_info
+        <set >
+            <if test="switchInfo != null" >
+                switch_info = #{switchInfo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+        and account = #{account,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xincao.todo_mvn.model.SwitchInfo" >
+        update switch_info
+        set switch_info = #{switchInfo,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+        and account = #{account,jdbcType=VARCHAR}
+    </update>
+</mapper>

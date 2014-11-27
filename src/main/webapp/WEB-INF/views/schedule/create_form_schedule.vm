@@ -1,0 +1,8 @@
+#set($top_menu="schedule")
+#set($side_bar="/schedule/create_form_schedule")
+#include("shared/header.vm")
+#parse("shared/top_menu.vm")
+#parse("shared/schedule_side_bar.vm")
+<div class="row-fluid">
+</div>
+#include("shared/footer.vm")
