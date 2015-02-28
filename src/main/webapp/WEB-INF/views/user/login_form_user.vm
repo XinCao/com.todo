@@ -43,7 +43,7 @@
     </label>
     <div class="row-fluid">
         <button class="btn btn-large btn-block btn-primary" type="submit">登录</button>
-        <a class="btn btn-large btn-block" type="button" href="/user/register_form_user"><div class="row-fluid">注册<i class="icon-arrow-right"></i></div></a>
+        <a class="btn btn-large btn-block" type="button" href="/todo/user/register_form_user"><div class="row-fluid">注册<i class="icon-arrow-right"></i></div></a>
     </div>
 </form>
 <script type="text/javascript">

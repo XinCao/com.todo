@@ -19,5 +19,5 @@
         <property name="properties" ref="systemConfigProperties" />
     </bean>
     <import resource="mybatis.xml" />
-    <bean class="com.xincao.todo_mvn.util.TodoInfos" init-method="printAllInfos"/>
+    <bean class="com.xincao.todo.util.TodoInfos" init-method="printAllInfos"/>
 </beans>

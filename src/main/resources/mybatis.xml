@@ -39,7 +39,7 @@
             <value>60000</value>
         </property>
     </bean>
-    <bean id="poolableConnectionFactory" class="com.xincao.todo_mvn.service.PoolableConnectionFactoryAE">
+    <bean id="poolableConnectionFactory" class="com.xincao.todo.service.PoolableConnectionFactoryAE">
         <constructor-arg index="0">
             <ref bean="connectionFactory"/>
         </constructor-arg>
@@ -72,24 +72,14 @@
             <value>classpath:mybatis-config.xml</value>
         </property>
     </bean>
-    <bean id="scheduleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
-        <property name="mapperInterface">
-            <value>com.xincao.todo_mvn.mapper.ScheduleMapper</value>
-        </property>
-    </bean>
     <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
         <property name="mapperInterface">
-            <value>com.xincao.todo_mvn.mapper.UserMapper</value>
-        </property>
-    </bean>
-    <bean id="taskMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
-        <property name="mapperInterface">
-            <value>com.xincao.todo_mvn.mapper.TaskMapper</value>
+            <value>com.xincao.todo.mapper.UserMapper</value>
         </property>
     </bean>
     <bean id="switchInfoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" autowire="byType">
         <property name="mapperInterface">
-            <value>com.xincao.todo_mvn.mapper.SwitchInfoMapper</value>
+            <value>com.xincao.todo.mapper.SwitchInfoMapper</value>
         </property>
     </bean>
 </beans>
