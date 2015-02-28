@@ -16,15 +16,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author caoxin
  */
 @Controller
-@RequestMapping(value = "/user/ajax/")
+@RequestMapping(value = "/user/ajax")
 public class AjaxUserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "check_account/{check_account}", method = RequestMethod.GET)
-    public @ResponseBody
-    Map<String, String> checkAccountAction(@PathVariable("check_account") String account) {
+    @RequestMapping(value = "/check_account/{check_account}", method = RequestMethod.GET)
+    public @ResponseBody Map<String, String> checkAccountAction(@PathVariable("check_account") String account) {
         Map<String, String> map = new HashMap<String, String>();
         if (!userService.haveAccount(account)) {
             map.put("is_ok", "1");
@@ -34,9 +33,8 @@ public class AjaxUserController {
         return map;
     }
 
-    @RequestMapping(value = "check_email/{check_email}", method = RequestMethod.GET)
-    public @ResponseBody
-    Map<String, String> checkEmailAction(@PathVariable("check_email") String email) {
+    @RequestMapping(value = "/check_email/{check_email}", method = RequestMethod.GET)
+    public @ResponseBody Map<String, String> checkEmailAction(@PathVariable("check_email") String email) {
         Map<String, String> map = new HashMap<String, String>();
         if (!userService.haveEmail(email)) {
             map.put("is_ok", "1");
