@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * 用户管理（没有用户帐号激活功能）
+ * 用户管理
  *
  * @author caoxin
  */
@@ -54,7 +54,7 @@ public class UserController {
         if (ok) {
             return "redirect:/user/login_form_user";
         } else {
-            return "/user/register_form_user";
+            return "redirect:/user/register_form_user";
         }
     }
 
@@ -99,7 +99,7 @@ public class UserController {
      * @param account
      * @return
      */
-    @RequestMapping(value = "do_activited_account/{account}", method = RequestMethod.GET)
+    @RequestMapping(value = "/do_activited_account/{account}", method = RequestMethod.GET)
     public String doActivitedAccountAction(@PathVariable("account") String account) {
         boolean ok;
         ok = this.userService.doActivitedAccount(account.trim());

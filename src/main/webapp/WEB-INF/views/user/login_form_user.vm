@@ -30,7 +30,7 @@
       padding: 7px 9px;
     }
 </style>
-<form id="login_form" class="form-signin" action="/user/do_login_user" method="post">
+<form id="login_form" class="form-signin" action="/todo/user/do_login_user" method="post">
     <h2 class="form-signin-heading">请登录</h2>
         #springBind("User.account")
         <input id="${status.expression}" name="${status.expression}" type="text" class="input-block-level" placeholder="帐号" value="$!status.value">

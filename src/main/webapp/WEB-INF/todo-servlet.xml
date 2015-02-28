@@ -38,6 +38,6 @@
                 <prop key="/user/do_login_user/session">userRoleSessionController</prop>
             </props>
         </property>
-    </bean>
+    </bean>  
     <bean id="userRoleSessionController" class="com.xincao.todo.controller.UserRoleSessionController"/>
 </beans>

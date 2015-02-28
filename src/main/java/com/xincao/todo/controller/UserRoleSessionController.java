@@ -40,10 +40,12 @@ public class UserRoleSessionController extends AbstractController {
             HttpSession httpSession = request.getSession(true);
             httpSession.setAttribute(USER_ROLE, UserRole.fromId(user.getUserRole()).getKey());
             logServiceImplementWithLogback.user_login(account, UserRole.fromId(user.getUserRole()).getKey());
-            return new ModelAndView(new RedirectView("/task/wait_to_be_done_task"));
+            // 登录成功, 跳转的界面
+            return new ModelAndView(new RedirectView("/todo/user/register_form_user"));
         } else {
             logger.error("login error account={}", account);
-            return new ModelAndView(new RedirectView("/user/login_form_user"));
+            // 登录失败
+            return new ModelAndView(new RedirectView("/todo/user/login_form_user"));
         }
     }
 
