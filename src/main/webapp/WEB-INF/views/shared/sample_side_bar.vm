@@ -21,9 +21,8 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">日程</li>
-              <li #if($side_bar=="/schedule/create_form_schedule") class="active" #end><a href="/schedule/create_form_schedule">创建日程表单</a></li>
-              <li #if($side_bar=="/schedule/daily_schedule_list/today") class="active" #end><a href="/schedule/daily_schedule_list/today">日程列表</a></li>
+              <li class="nav-header">样例</li>
+              <li #if($side_bar=="/todo/sample/sample") class="active" #end><a href="/todo/sample/sample">样例</a></li>
             </ul>
           </div>
         </div>

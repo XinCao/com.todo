@@ -21,7 +21,6 @@ public class UserRoleInterceptor extends HandlerInterceptorAdapter {
     private static final Logger logger = LoggerFactory.getLogger(UserRoleInterceptor.class);
     private static final String defaultUrl = "/user/login_form_user";
 
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession(true);

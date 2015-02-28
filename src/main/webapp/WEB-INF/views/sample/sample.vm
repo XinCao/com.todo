@@ -1,0 +1,8 @@
+#set($top_menu="sample")
+#include("shared/header.vm")
+#include("shared/top_menu.vm")
+#include("shared/sample_side_bar.vm")
+<div class="row-fluid">
+    <h1>sample</h1>
+</div>
+ #include("shared/footer.vm")
